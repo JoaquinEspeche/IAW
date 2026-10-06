@@ -21,6 +21,10 @@ exports.DatabaseModule = DatabaseModule = __decorate([
                 inject: [config_1.ConfigService],
                 useFactory: (configService) => ({
                     uri: configService.get('MONGODB_URI', 'mongodb://localhost:27017/search-service'),
+                    serverSelectionTimeoutMS: 10000,
+                    connectTimeoutMS: 10000,
+                    socketTimeoutMS: 30000,
+                    dbName: 'search-service',
                 }),
             }),
         ],

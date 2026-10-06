@@ -9,6 +9,10 @@ import { ConfigModule, ConfigService } from '@nestjs/config';
       inject: [ConfigService],
       useFactory: (configService: ConfigService) => ({
         uri: configService.get<string>('MONGODB_URI', 'mongodb://localhost:27017/search-service'),
+        serverSelectionTimeoutMS: 10000,
+        connectTimeoutMS: 10000,
+        socketTimeoutMS: 30000,
+        dbName: 'search-service',
       }),
     }),
   ],
